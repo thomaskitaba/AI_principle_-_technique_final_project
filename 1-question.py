@@ -45,14 +45,17 @@ class TravelingEthiopia:
         """Perform Breadth-First Search."""
         queue = [(start, [start])]
         visited = set()
-
+        # loop until all elements of the queue are poped
         while queue:
             (node, path) = queue.pop(0)
+            # if the city is visited do not go through it
+            
             if node in visited:
                 continue
-
+            # add city to the visited set
             visited.add(node)
 
+            # add the adjecent cities of the current_city to a queue
             for neighbor in self.graph.get(node, []):
                 if neighbor == goal:
                     return path + [neighbor]
@@ -72,7 +75,7 @@ class TravelingEthiopia:
                 continue
 
             visited.add(node)
-
+            # add the adjecent cities of the current_city to a queue
             for neighbor in self.graph.get(node, []):
                 if neighbor == goal:
                     return path + [neighbor]
@@ -82,14 +85,15 @@ class TravelingEthiopia:
         return None  # No path found
 
 # Example Usage
-graph_solver = TravelingEthiopia(graph)
+uniformedsearch = TravelingEthiopia(graph)
 
-# Find paths using BFS and DFS
+# Set start and goal cities
 start_city = 'Addis Ababa'
 goal_city = 'Bale'
 
-bfs_path = graph_solver.bfs(start_city, goal_city)
-dfs_path = graph_solver.dfs(start_city, goal_city)
+# assign bfs and dfs methods of the uniformedsearch object to their respective variables
+bfs_path = uniformedsearch.bfs(start_city, goal_city)
+dfs_path = uniformedsearch.dfs(start_city, goal_city)
 
 print("BFS Path:", bfs_path)
 print("DFS Path:", dfs_path)

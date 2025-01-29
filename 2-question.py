@@ -5,9 +5,7 @@
 import heapq
 
 class UninformedSearch:
-    """
     
-    """
     def __init__(self, graph, goals):
         self.graph = graph
         self.goals = set(goals)  # Ensure goals are a set
@@ -94,4 +92,4 @@ search = UninformedSearch(graph, goals)
 # Perform Uniform Cost Search
 result = search.ucs(start)
 print("\nFinal Result:", result)
-# 
+

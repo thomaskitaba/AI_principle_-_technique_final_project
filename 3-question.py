@@ -17,7 +17,6 @@ class Informedsearch:
         heapq.heappush(pri_queue, (self.heuristic.get(start), 0, start, []))
         
         while pri_queue:
-            
             # unpack variable of the the smallest element which infact is a tuple that contains the smallest f(n) 
             f, g, current_node, path = heapq.heappop(pri_queue)  
             
@@ -117,6 +116,4 @@ search = Informedsearch(graph, goal, heuristic)
 result = search.A(start)
 print(f"Path: {result[0]}")
 print(f"Total Utility: {result[1]}")
-
-# print(search.A(start))
 
