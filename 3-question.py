@@ -6,33 +6,39 @@ class Informedsearch:
         self.graph = graph
         self.goal = goal
         self.heuristic = heuristic
-        
+    
     def A(self, start):
-        
+        # initialize priority queue and visited variables 
         pri_queue = []
         visited = set()
         
+        # add the start city and information related to it, into the priority queue
+        # f(n) = g(n) + h(n)  -> imidiate cost + expected utility to the goal
         heapq.heappush(pri_queue, (self.heuristic.get(start), 0, start, []))
         
         while pri_queue:
             
+            # unpack variable of the the smallest element which infact is a tuple that contains the smallest f(n) 
             f, g, current_node, path = heapq.heappop(pri_queue)  
             
+            # check if goal city is reached
             if current_node == self.goal:
                 return path + [current_node], f
             
+            # create a new path, by adding the current city to the previous path
             new_path = path + [current_node]
             
             neighbor = self.graph.get(current_node, [])
-            
+            # check if the city is visited or not
             if current_node not in visited:
                 path = path + [current_node]
                 visited.add(current_node)
                 
+                # loop accross the adjecent cities and add them to the priority queue
                 for city, cost in neighbor:
                     heapq.heappush(pri_queue, (g + cost + self.heuristic.get(city),  g + cost, city, new_path))
         return ['Path not Found']
-
+# adjecency list representation for cities
 graph = {
     "Addis Ababa": [("Ambo", 5), ("Adama", 3), ("Debre Berhan", 5)],
     "Ambo": [("Addis Ababa", 5), ("Woliso", 6)],
@@ -68,6 +74,7 @@ graph = {
     "Humera": [("Shire", 7), ("Kartum", 21)],
     "Kartum": [("Humera", 21)]
 }
+# utitlity expected to reach the goal city from a specific city
 heuristic = {
     "Addis Ababa": 26,
     "Ambo": 31,

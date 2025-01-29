@@ -40,4 +40,4 @@ The questions in this project are interrelated and are based on the algorithms d
 Submission Instructions:
 The final submission is done through a Google Form, where you will provide your GitHub repository link.
 Make sure your repository is clean and easily reproducible.
-There will be an in-person presentation session a week after your final exam.
+There will be an in-person presentation session a week after your final exam. 
