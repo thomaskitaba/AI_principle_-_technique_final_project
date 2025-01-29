@@ -95,6 +95,7 @@ goal_city = 'Bale'
 bfs_path = uniformedsearch.bfs(start_city, goal_city)
 dfs_path = uniformedsearch.dfs(start_city, goal_city)
 
+# print paths obtained by searching using bfs and dfs
 print("BFS Path:", bfs_path)
 print("DFS Path:", dfs_path)
 
